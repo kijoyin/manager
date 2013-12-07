@@ -30,8 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,7 +50,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityModel\Expens.cs">
+      <DependentUpon>ManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\Expense_Type.cs">
+      <DependentUpon>ManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\ManagerModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManagerModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\ManagerModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\ManagerModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ManagerModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityModel\Receipt.cs">
+      <DependentUpon>ManagerModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseRepository.cs" />
+    <Compile Include="ExpenseTypeRepository.cs" />
+    <Compile Include="Infrastructure\ContextManager.cs" />
+    <Compile Include="Infrastructure\ManagerRepositoryContext.cs" />
+    <Compile Include="Interfaces\IExpenseRepository.cs" />
+    <Compile Include="Interfaces\IExpenseTypeRepository.cs" />
+    <Compile Include="Interfaces\IReceiptRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IRepositoryContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptRepository.cs" />
+    <Compile Include="RepositoryBase.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="EntityModel\ManagerModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ManagerModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityModel\ManagerModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ManagerModel.edmx</DependentUpon>
+      <LastGenOutput>ManagerModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="EntityModel\ManagerModel.edmx.diagram">
+      <DependentUpon>ManagerModel.edmx</DependentUpon>
+    </None>
+    <None Include="EntityModel\ManagerModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ManagerModel.edmx</DependentUpon>
+      <LastGenOutput>ManagerModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
